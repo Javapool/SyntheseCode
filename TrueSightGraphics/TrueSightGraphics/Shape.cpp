@@ -1,11 +1,10 @@
 #include "Shape.h"
 
 
-
-Shape::Shape()
+Shape::Shape(ShapeBlueprint BP)
 {
+	mVertices = BP.getVertices();
 }
-
 
 Shape::~Shape()
 {

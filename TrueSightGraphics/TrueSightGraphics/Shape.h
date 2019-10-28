@@ -1,8 +1,9 @@
 #pragma once
-#include "types.h"
+
 #include<vector>
 #include <utility>
 #include "Vertex.h"
+#include "ShapeBlueprint.h"
 class Shape
 {
 
@@ -15,7 +16,7 @@ class Shape
 
 
 public:
-	Shape();
+	Shape(ShapeBlueprint BP);
 	~Shape();
 };
 

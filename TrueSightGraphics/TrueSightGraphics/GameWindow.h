@@ -6,3 +6,10 @@ public:
 	~GameWindow();
 };
 
+class gameWindow
+{
+public:
+	gameWindow();
+	~gameWindow();
+};
+

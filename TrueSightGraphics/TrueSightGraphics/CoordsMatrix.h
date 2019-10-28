@@ -5,8 +5,7 @@ class CoordsMatrix:
 	public Matrix
 {
 	friend class TMatrix;
-
-	std::array<float, 4> mCoords;
+	float mCoords[4];
 public:
 	CoordsMatrix(float x, float y, float z, float h);
 	~CoordsMatrix()=default;

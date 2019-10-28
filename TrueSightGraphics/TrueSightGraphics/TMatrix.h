@@ -5,14 +5,17 @@ class TMatrix:
 	public Matrix
 {
 	friend class CoordsMatrix;
-
+	friend class MatrixCreator;
 	std::array<float, 16> mValues;
 public:
 	TMatrix();
+	TMatrix(std::array<float, 16> values);
 	~TMatrix();
+
+	void symmetrize();
 private:
-	void operator*(const TMatrix &matrix);
-	void operator*(CoordsMatrix *matrix);
+	//TMatrix operator*(const TMatrix &matrix);
+	//TMatrix operator*(CoordsMatrix *matrix);
 
 };
 
