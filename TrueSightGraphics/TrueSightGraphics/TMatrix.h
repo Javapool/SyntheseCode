@@ -1,21 +1,26 @@
 #pragma once
 #include "Matrix.h"
 #include "CoordsMatrix.h"
+
+typedef std::array<float, 16> squareMatrix;
+typedef std::array<float*, 16> squareIndexMatrix;
+
 class TMatrix:
 	public Matrix
 {
 	friend class CoordsMatrix;
 	friend class MatrixCreator;
-	std::array<float, 16> mValues;
+	squareMatrix mValues;
 public:
 	TMatrix();
-	TMatrix(std::array<float, 16> values);
+	TMatrix(squareMatrix values);
 	~TMatrix();
 
-	void symmetrize();
+	void afficher();
+	TMatrix operator*(TMatrix matrix);
+	CoordsMatrix operator*(CoordsMatrix matrix);
 private:
-	//TMatrix operator*(const TMatrix &matrix);
-	//TMatrix operator*(CoordsMatrix *matrix);
+
 
 };
 

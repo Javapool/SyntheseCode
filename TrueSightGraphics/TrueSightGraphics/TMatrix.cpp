@@ -1,5 +1,7 @@
 #include "TMatrix.h"
 #include <math.h>
+#include <conio.h>
+#include <iostream>
 
 
 
@@ -7,8 +9,8 @@ TMatrix::TMatrix()
 {
 }
 
-TMatrix::TMatrix(std::array<float, 16> values)
-	:mValues{values}
+TMatrix::TMatrix(squareMatrix values)
+	:mValues{ values }
 {
 }
 
@@ -17,57 +19,90 @@ TMatrix::~TMatrix()
 {
 }
 
-
-void TMatrix::symmetrize()
+void TMatrix::afficher()
 {
-	std::array<float, 16> temp;
-	std::array<float, 16> *listPointer = &mValues;
-	std::array<float, 16> *readPointer = listPointer;
-	std::array<float, 16> *tempPointer = &temp;
-	std::array<float, 16> *writePointer = tempPointer;
-
 	for (size_t i = 0; i < 4; i++)
 	{
-		writePointer = tempPointer + i;
 		for (size_t j = 0; j < 4; j++)
 		{
-			*writePointer = *readPointer;
-			writePointer += 4;
-			readPointer++;
+			std::cout << mValues[4 * i + j];
+			std::cout << "\t\t";
+
 
 		}
-
+		std::cout << "\n";
 	}
-
-	mValues = temp;
 }
 
-//TMatrix TMatrix::operator*(const TMatrix &matrix)
+
+//void TMatrix::symmetrize()
 //{
-//	std::array<float, 16> temp = mValues;
+//	squareMatrix temp;
+//	squareMatrix *listPointer = &mValues;
+//	squareMatrix *readPointer = listPointer;
+//	squareMatrix *tempPointer = &temp;
+//	squareMatrix *writePointer = tempPointer;
+//
 //	for (size_t i = 0; i < 4; i++)
 //	{
+//		writePointer = tempPointer + i;
 //		for (size_t j = 0; j < 4; j++)
 //		{
-//			for (size_t k = 0; k < 4; k++)
-//			{
-//				temp[j*4+i] += (mValues[j * 4 + i]*matrix.mValues[k*4+i]);
-//			}
-//		}
-//	}
-//	return NULL;
+//			*writePointer = *readPointer;
+//			writePointer += 4;
+//			readPointer++;
 //
-////}
-//
-//TMatrix TMatrix::operator*(CoordsMatrix *matrix)
-//{
-//	float temp[4]{ *(matrix->mCoords) };
-//	for (size_t i = 0; i < 4; i++)
-//	{
-//		for (size_t j = 0; j < 4; j++)
-//		{
-//			temp[i] += (matrix->mCoords[i] * mValues[j*4+i]);
 //		}
+//
 //	}
-//	*(matrix->mCoords) = *temp;
+//
+//	mValues = temp;
 //}
+
+TMatrix TMatrix::operator*(TMatrix matrix)
+{
+	TMatrix temp = TMatrix();
+	float *tempStart = &temp.mValues[0];
+	float *matAStart = &mValues[0];
+	float *matBStart = &matrix.mValues[0];
+
+	//firstLine
+	*tempStart = (*matAStart)*(*matBStart) + (*(matAStart + 1)*(*(matBStart + 4))) + (*(matAStart + 2))*(*(matBStart + 8)) + (*(matAStart + 3))*(*(matBStart + 12));
+	*(tempStart + 1) = (*matAStart)*(*(matBStart + 1)) + (*(matAStart + 1)*(*(matBStart + 5))) + (*(matAStart + 2))*(*(matBStart + 9)) + (*(matAStart + 3))*(*(matBStart + 13));
+	*(tempStart + 2) = (*matAStart)*(*(matBStart + 2)) + (*(matAStart + 1)*(*(matBStart + 6))) + (*(matAStart + 2))*(*(matBStart + 10)) + (*(matAStart + 3))*(*(matBStart + 14));
+	*(tempStart + 3) = (*matAStart)*(*(matBStart + 3)) + (*(matAStart + 1)*(*(matBStart + 7))) + (*(matAStart + 2))*(*(matBStart + 11)) + (*(matAStart + 3))*(*(matBStart + 15));
+
+	//Nextline
+	*(tempStart + 4) =	(*matAStart+4)*(*matBStart) +		(*(matAStart + 5)*(*(matBStart + 4))) + (*(matAStart + 6))*(*(matBStart + 8)) +		(*(matAStart + 7))*(*(matBStart + 12));
+	*(tempStart + 5) =	(*matAStart+4)*(*(matBStart + 1)) + (*(matAStart + 5)*(*(matBStart + 5))) + (*(matAStart + 6))*(*(matBStart + 9)) +		(*(matAStart + 7))*(*(matBStart + 13));
+	*(tempStart + 6) =	(*matAStart+4)*(*(matBStart + 2)) + (*(matAStart + 5)*(*(matBStart + 6))) + (*(matAStart + 6))*(*(matBStart + 10)) +	(*(matAStart + 7))*(*(matBStart + 14));
+	*(tempStart + 7) =	(*matAStart+4)*(*(matBStart + 3)) + (*(matAStart + 5)*(*(matBStart + 7))) + (*(matAStart + 6))*(*(matBStart + 11)) +	(*(matAStart + 7))*(*(matBStart + 15));
+
+	*(tempStart + 8) =	(*matAStart+8)*(*matBStart) +		(*(matAStart + 9)*(*(matBStart + 4))) + (*(matAStart + 10))*(*(matBStart + 8)) +	(*(matAStart + 11))*(*(matBStart + 12));
+	*(tempStart + 9) =	(*matAStart+8)*(*(matBStart + 1)) +	(*(matAStart + 9)*(*(matBStart + 5))) + (*(matAStart + 10))*(*(matBStart + 9)) +	(*(matAStart + 11))*(*(matBStart + 13));
+	*(tempStart + 10) = (*matAStart+8)*(*(matBStart + 2)) +	(*(matAStart + 9)*(*(matBStart + 6))) + (*(matAStart + 10))*(*(matBStart + 10)) +	(*(matAStart + 11))*(*(matBStart + 14));
+	*(tempStart + 11) = (*matAStart+8)*(*(matBStart + 3)) +	(*(matAStart + 9)*(*(matBStart + 7))) + (*(matAStart + 10))*(*(matBStart + 11)) +	(*(matAStart + 11))*(*(matBStart + 15));
+
+	*(tempStart + 12) = (*matAStart+12)*(*matBStart) +			(*(matAStart + 13)*(*(matBStart + 4))) + (*(matAStart + 14))*(*(matBStart + 8)) +	(*(matAStart + 15))*(*(matBStart + 12));
+	*(tempStart + 13) = (*matAStart+12)*(*(matBStart + 1)) +	(*(matAStart + 13)*(*(matBStart + 5))) + (*(matAStart + 14))*(*(matBStart + 9)) +	(*(matAStart + 15))*(*(matBStart + 13));
+	*(tempStart + 14) = (*matAStart+12)*(*(matBStart + 2)) +	(*(matAStart + 13)*(*(matBStart + 6))) + (*(matAStart + 14))*(*(matBStart + 10)) +	(*(matAStart + 15))*(*(matBStart + 14));
+	*(tempStart + 15) = (*matAStart+12)*(*(matBStart + 3)) +	(*(matAStart + 13)*(*(matBStart + 7))) + (*(matAStart + 14))*(*(matBStart + 11)) +	(*(matAStart + 15))*(*(matBStart + 15));
+
+	return temp;
+}
+
+CoordsMatrix TMatrix::operator*(CoordsMatrix matrix)
+{
+	CoordsMatrix temp = CoordsMatrix(0, 0, 0, 0);
+	float *tempStart = &temp.mCoords[0];
+	float *matAStart = &matrix.mCoords[0];
+	float *matBStart = &mValues[0];
+
+	*tempStart = (*matAStart)*(*matBStart) + (*(matAStart + 1)*(*(matBStart + 4))) + (*(matAStart + 2))*(*(matBStart + 8)) + (*(matAStart + 3))*(*(matBStart + 12));
+	*(tempStart + 1) = (*matAStart)*(*(matBStart + 1)) + (*(matAStart + 1)*(*(matBStart + 5))) + (*(matAStart + 2))*(*(matBStart + 9)) + (*(matAStart + 3))*(*(matBStart + 13));
+	*(tempStart + 2) = (*matAStart)*(*(matBStart + 2)) + (*(matAStart + 1)*(*(matBStart + 6))) + (*(matAStart + 2))*(*(matBStart + 10)) + (*(matAStart + 3))*(*(matBStart + 14));
+	*(tempStart + 3) = (*matAStart)*(*(matBStart + 3)) + (*(matAStart + 1)*(*(matBStart + 7))) + (*(matAStart + 2))*(*(matBStart + 11)) + (*(matAStart + 3))*(*(matBStart + 15));
+
+	return temp;
+}
+
