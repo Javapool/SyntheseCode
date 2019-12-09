@@ -2,6 +2,11 @@
 
 
 
+CoordsMatrix::CoordsMatrix()
+	:mCoords{ 0,0,0,1 }
+{
+
+}
 CoordsMatrix::CoordsMatrix(float x, float y, float z, float h)
 	:mCoords{ x,y,z,h }
 {

@@ -20,8 +20,16 @@ public:
 	ShapeBlueprint readFile(const std::string path);
 
 private:
+	float mOffsetX;
+	float mOffsetY;
+	float mOffsetZ;
+	float mResizeFactor{1};
+
+	void stringVertexToValues(std::string line, float *values);
 	void stringToVertex(std::string line, ShapeBlueprint &BP);
 	void stringToPlane(std::string line, ShapeBlueprint &BP);
+	void resizeVectorsNormalize(const std::string path, ShapeBlueprint &BP);
+	void fillVectors(const std::string path, ShapeBlueprint &BP);
 
 };
 

@@ -9,5 +9,7 @@ class Vertex
 public:
 	Vertex(float x, float y, float z, float h);
 	~Vertex();
+
+	void afficher();
 };
 

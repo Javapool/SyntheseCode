@@ -13,6 +13,7 @@ class Shape
 	std::vector<Vertex> mVertices;
 	std::vector<line> mLines;
 	std::vector<plane> mPlanes;
+	Vertex mPosition;
 
 
 public:

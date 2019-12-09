@@ -10,7 +10,7 @@ class TMatrix:
 {
 	friend class CoordsMatrix;
 	friend class MatrixCreator;
-	squareMatrix mValues;
+	squareMatrix mValues{ 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };
 public:
 	TMatrix();
 	TMatrix(squareMatrix values);

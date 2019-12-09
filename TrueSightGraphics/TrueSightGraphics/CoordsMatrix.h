@@ -9,6 +9,7 @@ class CoordsMatrix:
 	friend class TMatrix;
 	float mCoords[4];
 public:
+	CoordsMatrix();
 	CoordsMatrix(float x, float y, float z, float h);
 	~CoordsMatrix()=default;
 	void afficher();

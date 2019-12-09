@@ -12,3 +12,8 @@ Vertex::Vertex(float x, float y, float z, float h)
 Vertex::~Vertex()
 {
 }
+
+void Vertex::afficher()
+{
+	mCoords.afficher();
+}
