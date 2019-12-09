@@ -136,7 +136,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameSpace.h" />
     <ClInclude Include="GameWindow.h" />
-    <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixCreator.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Projector.h" />
@@ -154,7 +153,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameSpace.cpp" />
     <ClCompile Include="GameWindow.cpp" />
-    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixCreator.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projector.cpp" />

@@ -59,12 +59,12 @@ void TMatrix::afficher()
 //	mValues = temp;
 //}
 
-TMatrix TMatrix::operator*(TMatrix matrix)
+TMatrix TMatrix::operator*(TMatrix const &matrix)
 {
 	TMatrix temp = TMatrix();
 	float *tempStart = &temp.mValues[0];
 	float *matAStart = &mValues[0];
-	float *matBStart = &matrix.mValues[0];
+	const float *matBStart = &matrix.mValues[0];
 
 	//firstLine
 	*tempStart = (*matAStart)*(*matBStart) + (*(matAStart + 1)*(*(matBStart + 4))) + (*(matAStart + 2))*(*(matBStart + 8)) + (*(matAStart + 3))*(*(matBStart + 12));
@@ -91,11 +91,11 @@ TMatrix TMatrix::operator*(TMatrix matrix)
 	return temp;
 }
 
-CoordsMatrix TMatrix::operator*(CoordsMatrix matrix)
+Vertex TMatrix::operator*(Vertex const &matrix)
 {
-	CoordsMatrix temp = CoordsMatrix(0, 0, 0, 0);
+	Vertex temp = Vertex(0, 0, 0, 0);
 	float *tempStart = &temp.mCoords[0];
-	float *matAStart = &matrix.mCoords[0];
+	const float *matAStart = &matrix.mCoords[0];
 	float *matBStart = &mValues[0];
 
 	*tempStart = (*matAStart)*(*matBStart) + (*(matAStart + 1)*(*(matBStart + 4))) + (*(matAStart + 2))*(*(matBStart + 8)) + (*(matAStart + 3))*(*(matBStart + 12));

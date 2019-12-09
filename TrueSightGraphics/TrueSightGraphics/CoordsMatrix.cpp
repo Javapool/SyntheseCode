@@ -26,8 +26,8 @@ void CoordsMatrix::afficher()
 CoordsMatrix CoordsMatrix::operator*(TMatrix matrix)
 {
 	CoordsMatrix temp = CoordsMatrix(0, 0, 0, 0);
-	float *tempStart = &temp.mCoords[0];
-	float *matAStart = &mCoords[0];
+	float *tempStart = temp.mCoords;
+	float *matAStart = mCoords;
 	float *matBStart = &matrix.mValues[0];
 
 	*tempStart = (*matAStart)*(*matBStart) + (*(matAStart + 1)*(*(matBStart + 4))) + (*(matAStart + 2))*(*(matBStart + 8)) + (*(matAStart + 3))*(*(matBStart + 12));
@@ -40,10 +40,15 @@ CoordsMatrix CoordsMatrix::operator*(TMatrix matrix)
 
 void CoordsMatrix::divideByH()
 {
-	float *matStart = &mCoords[0];
+	float *matStart = mCoords;
 	*matStart /= *(matStart + 3);
 	*(matStart + 1) /= *(matStart + 3);
 	*(matStart + 2) /= *(matStart + 3);
+}
+
+float * CoordsMatrix::getCoords()
+{
+	return mCoords;
 }
 
 

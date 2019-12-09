@@ -8,6 +8,11 @@ Player::Player()
 
 }
 
+float * Player::getCoords()
+{
+	return mCoords.getCoords();
+}
+
 Player::~Player()
 {
 }

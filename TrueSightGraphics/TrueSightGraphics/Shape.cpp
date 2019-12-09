@@ -22,6 +22,26 @@ Shape::Shape(ShapeBlueprint BP)
 
 }
 
+float * Shape::getCoords()
+{
+	return mCoords.getCoords();
+}
+
+float * Shape::getDeltas()
+{
+	return mMovement.getCoords();
+}
+
+void Shape::move(TMatrix * matriceTrans)
+{
+	mCoords*(*matriceTrans);
+}
+
+void Shape::
+normalize(TMatrix * matriceNorm)
+{
+}
+
 Shape::~Shape()
 {
 }

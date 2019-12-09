@@ -21,6 +21,8 @@ public:
 		return instance;
 	}
 
+	float* getCoords();
+
 	~Player();
 };
 

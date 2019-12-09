@@ -13,6 +13,11 @@ Vertex::~Vertex()
 {
 }
 
+float *Vertex::getCoords()
+{
+	return mCoords.getCoords();
+}
+
 void Vertex::afficher()
 {
 	mCoords.afficher();
