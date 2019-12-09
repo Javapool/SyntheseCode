@@ -18,9 +18,6 @@
     <ClInclude Include="TMatrix.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="CoordsMatrix.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -60,12 +57,15 @@
     <ClInclude Include="MatrixCreator.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="ObjetPhysique.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Carre.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TMatrix.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CoordsMatrix.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
@@ -108,6 +108,12 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="MatrixCreator.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjetPhysique.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Carre.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

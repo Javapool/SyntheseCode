@@ -10,10 +10,7 @@ class Shape
 	using line = std::pair<Vertex*, Vertex*>;
 	using plane = std::tuple<Vertex*, Vertex*, Vertex*>;
 
-	//dans mMovement les 4 float représentent des vecteurs de déplacement(x,y,z et rotation)
-	Vertex mMovement;
-	//dans mCoords les 4 float représentent des vecteurs de position(x,y,x et angle)
-	Vertex mCoords;
+
 
 	std::vector<Vertex> mVertices;
 	std::vector<line> mLines;

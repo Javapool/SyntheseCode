@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-
-#include "CoordsMatrix.h"
+#include "TMatrix.h"
+#include <iostream>
 class Vertex
 {
 	friend class TMatrix;
@@ -13,7 +13,9 @@ public:
 
 	float* getCoords();
 	void afficher();
-	Vertex operator*(TMatrix matrix);
+	Vertex operator*(TMatrix &right);
+	Vertex& operator+=(Vertex &right);
+	void clampAngle();
 	void divideByH();
 };
 

@@ -34,7 +34,7 @@ float * Shape::getDeltas()
 
 void Shape::move(TMatrix * matriceTrans)
 {
-	mCoords*(*matriceTrans);
+	mCoords = mCoords*(*matriceTrans);
 }
 
 void Shape::
