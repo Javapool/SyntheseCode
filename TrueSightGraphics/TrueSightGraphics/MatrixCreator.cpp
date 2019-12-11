@@ -45,7 +45,7 @@ TMatrix MatrixCreator::composite(float x, float y, float z, float degY)
 
 }
 
-TMatrix MatrixCreator::scaleNew(float size)
+TMatrix MatrixCreator::scale(float size)
 {
 	TMatrix temp = TMatrix(identityArray);
 	temp.mValues[0] = size;
@@ -54,7 +54,7 @@ TMatrix MatrixCreator::scaleNew(float size)
 	return temp;
 }
 
-TMatrix MatrixCreator::normalization(Player * player)
+void MatrixCreator::normalization(Player * player, TMatrix & source)
 {
 	float* coords{ player->getCoords() };
 
@@ -63,10 +63,10 @@ TMatrix MatrixCreator::normalization(Player * player)
 	const float posZ{ *(coords + 2) };
 	const float angle{ *(coords + 3) };
 
-	return translation(-(posX), -(posY), -(posZ))*rotationY(-(angle));
+	source = translation(-(posX), -(posY), -(posZ))*rotationY(-(angle));
 }
 
-TMatrix MatrixCreator::movement(Shape * shape)
+void MatrixCreator::movement(ObjetPhysique * shape, TMatrix & source)
 {
 	const float * coords{ shape->getCoords() };
 	const float * deltas{ shape->getDeltas() };
@@ -80,6 +80,6 @@ TMatrix MatrixCreator::movement(Shape * shape)
 
 	const float deltaAngle{ *(deltas + 3) };
 
-	return translation(-(posX), -(posY), -(posZ))*rotationY(deltaAngle)* translation(posX+deltaX, posY+deltaY, posZ+deltaZ);
+	source = translation(-(posX), -(posY), -(posZ))*rotationY(deltaAngle)* translation(posX+deltaX, posY+deltaY, posZ+deltaZ);
 }
 

@@ -39,7 +39,7 @@ Vertex Vertex::operator*(TMatrix &right)
 	*(tempStart + 1) = (*matAStart)*(*(matBStart + 1)) + (*(matAStart + 1)*(*(matBStart + 5))) + (*(matAStart + 2))*(*(matBStart + 9)) + (*(matAStart + 3))*(*(matBStart + 13));
 	*(tempStart + 2) = (*matAStart)*(*(matBStart + 2)) + (*(matAStart + 1)*(*(matBStart + 6))) + (*(matAStart + 2))*(*(matBStart + 10)) + (*(matAStart + 3))*(*(matBStart + 14));
 	*(tempStart + 3) = (*matAStart)*(*(matBStart + 3)) + (*(matAStart + 1)*(*(matBStart + 7))) + (*(matAStart + 2))*(*(matBStart + 11)) + (*(matAStart + 3))*(*(matBStart + 15));
-
+	divideByH();
 	return temp;
 }
 
@@ -52,15 +52,6 @@ Vertex& Vertex::operator+=(Vertex &right)
 	return *this;
 }
 
-void Vertex::clampAngle()
-{
-	if (mCoords[3] > 360) {
-		mCoords[3] -= 360;
-	}
-	else if (mCoords < 0) {
-		mCoords[3] += 360;
-	}
-}
 
 void Vertex::divideByH()
 {
@@ -69,4 +60,11 @@ void Vertex::divideByH()
 	*(matStart + 1) /= *(matStart + 3);
 	*(matStart + 2) /= *(matStart + 3);
 	*(matStart + 3) = 1;
+}
+
+void Vertex::divideByZ()
+{
+	float *matStart = mCoords;
+	*matStart /= *(matStart + 2);
+	*(matStart + 1) /= *(matStart + 2);
 }

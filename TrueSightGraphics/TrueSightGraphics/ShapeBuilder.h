@@ -12,11 +12,11 @@ class ShapeBuilder
 	std::vector<ShapeBlueprint> mBlueprints;
 	FileReader reader;
 public:
-	ShapeBuilder();
-	~ShapeBuilder();
+	ShapeBuilder()=default;
+	~ShapeBuilder()=default;
 	void readFiles();
 	void showFiles();
-	Shape buildShape(int index);
+	ShapeBlueprint getShape(int index);
 	
 };
 

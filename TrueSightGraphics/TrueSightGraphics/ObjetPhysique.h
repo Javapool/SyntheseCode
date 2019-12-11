@@ -1,18 +1,31 @@
 #pragma once
 #include "Vertex.h"
 #include "Shape.h"
+#include "MatrixCreator.h"
 #include <string>
 class ObjetPhysique
 {
 	std::string nom;
-	//dans mMovement les 4 float représentent des vecteurs de déplacement(x,y,z et rotation)
 	Vertex mMovement;
-	//dans mCoords les 4 float représentent des vecteurs de position(x,y,x et angle)
 	Vertex mCoords;
-	Shape* forme;
+	float mX;
+	float mY;
+	float mZ;
+	float mAngle;
+
+	float mDeltaX;
+	float mDeltaY;
+	float mDeltaZ;
+	float mDeltaAngle;
+
+
+	Shape *mForme;
 public:
-	ObjetPhysique(float posX, float posY, float posZ, float angle);
+	ObjetPhysique(ShapeBlueprint bluePrint, float size, float posX, float posY, float posZ, float angle);
 	~ObjetPhysique();
+	void normalize(TMatrix tMatrix);
+	Shape* getShape();
+	void clampAngle();
 	void move();
 };
 

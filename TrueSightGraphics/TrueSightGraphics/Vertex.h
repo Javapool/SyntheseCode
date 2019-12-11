@@ -15,7 +15,7 @@ public:
 	void afficher();
 	Vertex operator*(TMatrix &right);
 	Vertex& operator+=(Vertex &right);
-	void clampAngle();
 	void divideByH();
+	void divideByZ();
 };
 

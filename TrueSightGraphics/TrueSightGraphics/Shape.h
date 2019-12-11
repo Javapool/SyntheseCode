@@ -6,23 +6,23 @@
 #include "ShapeBlueprint.h"
 class Shape
 {
-
+	using pLine= std::tuple<Vertex*, Vertex*, bool>;
 	using line = std::pair<Vertex*, Vertex*>;
 	using plane = std::tuple<Vertex*, Vertex*, Vertex*>;
 
-
+	//Pvertices et Plines sont les lignes et les vertex après normalisation
 
 	std::vector<Vertex> mVertices;
+	std::vector<Vertex> mPVertices;
 	std::vector<line> mLines;
+	std::vector<pLine> mPLines;
 	std::vector<plane> mPlanes;
 
 
 public:
 	Shape(ShapeBlueprint BP);
-	float* getCoords();
-	float* getDeltas();
-	void move(TMatrix *matriceTrans);
-	void normalize(TMatrix *matriceNorm);
+	void transform(TMatrix matriceTrans);
+	void normalize(TMatrix matriceNorm);
 	~Shape();
 };
 

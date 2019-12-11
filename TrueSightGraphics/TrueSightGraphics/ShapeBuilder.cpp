@@ -1,16 +1,5 @@
 #include "ShapeBuilder.h"
 
-
-
-ShapeBuilder::ShapeBuilder()
-{
-}
-
-
-ShapeBuilder::~ShapeBuilder()
-{
-}
-
 void ShapeBuilder::readFiles()
 {
 	std::string folder{ "..\\OBJFILES" };
@@ -40,7 +29,7 @@ void ShapeBuilder::showFiles()
 	}
 }
 
-Shape ShapeBuilder::buildShape(int index)
+ShapeBlueprint ShapeBuilder::getShape(int index)
 {
-	return Shape(mBlueprints[index]);
+	return mBlueprints[index];
 }
