@@ -2,7 +2,6 @@
 
 
 
-
 ShapeBlueprint::ShapeBlueprint()
 {
 }

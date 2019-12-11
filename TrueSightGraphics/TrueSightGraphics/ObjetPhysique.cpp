@@ -1,9 +1,10 @@
 #include "ObjetPhysique.h"
+#include "MatrixCreator.h"
 
 
 
 ObjetPhysique::ObjetPhysique(ShapeBlueprint bluePrint, float size, float posX, float posY, float posZ, float angle)
-	:mMovement{ 0,0,0,0 }, mCoords{ posX,posY,posZ,1 }, mAngle{ angle }
+	:mX{ posX }, mY{ posY }, mZ{ posZ }, mAngle{ angle }
 {
 	mForme = &Shape(bluePrint);
 	TMatrix scaleMatrix = MatrixCreator::scale(size);

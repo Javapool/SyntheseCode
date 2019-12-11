@@ -4,6 +4,8 @@
 #include <utility>
 #include "Vertex.h"
 #include "ShapeBlueprint.h"
+#include <tuple>
+
 class Shape
 {
 	using pLine= std::tuple<Vertex*, Vertex*, bool>;

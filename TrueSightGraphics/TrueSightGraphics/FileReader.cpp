@@ -36,12 +36,6 @@ ShapeBlueprint FileReader::readFile(const std::string path)
 	resizeVectorsNormalize(path, BP);
 	fillVectors(path, BP);
 
-
-	_getch();
-
-
-
-	
 	return BP;
 }
 
@@ -74,7 +68,6 @@ void FileReader::stringToVertex(std::string line, ShapeBlueprint &BP)
 
 void FileReader::stringToPlane(std::string line, ShapeBlueprint &BP)
 {
-	std::cout << line;
 	std::stringstream ss(line);
 	std::stringstream subss;
 	std::string token;
@@ -93,17 +86,17 @@ void FileReader::stringToPlane(std::string line, ShapeBlueprint &BP)
 	subssB >> vertexindexB;
 	subssC >> vertexindexC;
 
-	BP.addPlane(vertexindexA, vertexindexB, vertexindexC);
+	BP.addPlane(vertexindexA-1, vertexindexB-1, vertexindexC-1);
 
 	//check if lines are a<b to add them only once
 	if (vertexindexA < vertexindexB) {
-		BP.addLine(vertexindexA, vertexindexB);
+		BP.addLine(vertexindexA-1, vertexindexB-1);
 	}
 	if (vertexindexB < vertexindexC) {
-		BP.addLine(vertexindexB, vertexindexC);
+		BP.addLine(vertexindexB - 1, vertexindexC - 1);
 	}
 	if (vertexindexC < vertexindexA) {
-		BP.addLine(vertexindexC, vertexindexA);
+		BP.addLine(vertexindexC - 1, vertexindexA - 1);
 	}
 }
 

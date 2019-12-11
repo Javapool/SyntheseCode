@@ -56,29 +56,27 @@ TMatrix MatrixCreator::scale(float size)
 
 void MatrixCreator::normalization(Player * player, TMatrix & source)
 {
-	float* coords{ player->getCoords() };
 
-	const float posX{ *coords };
-	const float posY{ *(coords + 1) };
-	const float posZ{ *(coords + 2) };
-	const float angle{ *(coords + 3) };
+	const float posX{ player->mX };
+	const float posY{ player->mY };
+	const float posZ{ player->mZ };
+	const float angle{ player->mAngle };
 
 	source = translation(-(posX), -(posY), -(posZ))*rotationY(-(angle));
 }
 
-void MatrixCreator::movement(ObjetPhysique * shape, TMatrix & source)
+void MatrixCreator::movement(ObjetPhysique *objet, TMatrix & source)
 {
-	const float * coords{ shape->getCoords() };
-	const float * deltas{ shape->getDeltas() };
-	const float posX{ *coords };
-	const float posY{ *(coords + 1) };
-	const float posZ{ *(coords + 2) };
 
-	const float deltaX{ * deltas};
-	const float deltaY{ *(deltas+ 1) };
-	const float deltaZ{ *(deltas+ 2) };
+	const float posX{ objet->mX };
+	const float posY{ objet->mY };
+	const float posZ{ objet->mZ };
 
-	const float deltaAngle{ *(deltas + 3) };
+	const float deltaX{ objet->mDeltaX };
+	const float deltaY{ objet->mDeltaY };
+	const float deltaZ{ objet->mDeltaZ };
+
+	const float deltaAngle{ objet->mDeltaAngle };
 
 	source = translation(-(posX), -(posY), -(posZ))*rotationY(deltaAngle)* translation(posX+deltaX, posY+deltaY, posZ+deltaZ);
 }

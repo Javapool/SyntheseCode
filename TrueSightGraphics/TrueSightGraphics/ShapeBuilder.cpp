@@ -8,7 +8,7 @@ void ShapeBuilder::readFiles()
 	HANDLE hFind = ::FindFirstFile(search_path.c_str(), &fd);
 	if (hFind != INVALID_HANDLE_VALUE) {
 		do {
-			std::cout << fd.cFileName<<"\n";
+			//std::cout << fd.cFileName<<"\n";
 									  
 			if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
 				mBlueprints.push_back(reader.readFile(folder+"\\"+fd.cFileName));

@@ -1,4 +1,5 @@
 #include "Shape.h"
+#include "TMatrix.h"
 
 Shape::Shape(ShapeBlueprint BP)
 {
@@ -14,8 +15,8 @@ Shape::Shape(ShapeBlueprint BP)
 		mLines[i].first = &(mVertices[lines[i].first]);
 		mLines[i].second = &(mVertices[lines[i].second]);
 
-		std::get<0>(mPLines[i]) = &(mPVertices[lines[i].first]);
-		std::get<1>(mPLines[i]) = &(mPVertices[lines[i].second]);
+		std::get<0>(mPLines[i]) = &(mPVertices[(lines[i].first)]);
+		std::get<1>(mPLines[i]) = &(mPVertices[(lines[i].second)]);
 	}
 
 	for (size_t j = 0; j < planes.size(); j++)

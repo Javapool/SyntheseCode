@@ -85,7 +85,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
@@ -131,10 +131,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Carre.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameSpace.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="MatrixCreator.h" />
     <ClInclude Include="ObjetPhysique.h" />
@@ -149,10 +147,8 @@
     <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Carre.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameSpace.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="MatrixCreator.cpp" />
     <ClCompile Include="ObjetPhysique.cpp" />

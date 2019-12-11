@@ -1,6 +1,5 @@
 #pragma once
 #include <array>
-#include "CoordsMatrix.h"
 #include "Vertex.h"
 
 	typedef std::array<float, 16> squareMatrix;

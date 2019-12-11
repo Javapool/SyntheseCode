@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
-#include "TMatrix.h"
 #include <iostream>
+class TMatrix;
+
 class Vertex
 {
 	friend class TMatrix;

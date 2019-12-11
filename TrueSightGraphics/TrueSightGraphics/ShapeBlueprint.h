@@ -1,5 +1,7 @@
 #pragma once
 #include "Vertex.h"
+#include <Tuple>
+
 class ShapeBlueprint
 {
 	using lineIndex = std::pair<int, int>;

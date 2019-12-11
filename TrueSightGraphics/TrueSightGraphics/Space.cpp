@@ -26,9 +26,9 @@ void Space::createObject(int index, float size, float posX, float posY, float po
 
 void Space::update()
 {
-
+	MatrixCreator::normalization(&player, mMatciceGlobale);
 	for (ObjetPhysique objet : mObjets) {
-		MatrixCreator::movement(&objet, mMatriceObjet);
-		objet.transform(mMatriceObjet);
+		objet.move();
+		objet.normalize(mMatciceGlobale);
 	}
 }

@@ -1,22 +1,24 @@
 #pragma once
 #include "Vertex.h"
 #include "Shape.h"
-#include "MatrixCreator.h"
 #include <string>
+
+class MatrixCreator;
+
 class ObjetPhysique
 {
-	std::string nom;
-	Vertex mMovement;
-	Vertex mCoords;
+	friend class MatrixCreator;
+	std::string nom{"salut"};
 	float mX;
 	float mY;
 	float mZ;
 	float mAngle;
 
-	float mDeltaX;
-	float mDeltaY;
-	float mDeltaZ;
-	float mDeltaAngle;
+	float mDeltaX{0};
+	float mDeltaY{0};
+	float mDeltaZ{0};
+	float mDeltaAngle{0};
+
 
 
 	Shape *mForme;

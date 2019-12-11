@@ -3,12 +3,13 @@
 #include"ObjetPhysique.h"
 #include "ShapeBuilder.h"
 #include "MatrixCreator.h"
+#include "Player.h"
 class Space
 {
 	std::list<ObjetPhysique> mObjets;
-	TMatrix mMatriceObjet;
 	TMatrix mMatciceGlobale;
 	ShapeBuilder builder;
+	Player player;
 
 
 
