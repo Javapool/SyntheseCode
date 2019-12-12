@@ -20,7 +20,7 @@ void View::update()
 {
 }
 
-void View::display(std::list<std::pair<Vertex*, Vertex*>> *lines)
+void View::display(std::list<std::pair<Vertex*, Vertex*>> lines)
 {
 
 		sf::Event event;
@@ -31,7 +31,16 @@ void View::display(std::list<std::pair<Vertex*, Vertex*>> *lines)
 		}
 
 		window.clear();
-		//window.draw(shape);
+		for(std::pair<Vertex*, Vertex*> laLigne : lines)
+		{
+			sf::Vertex line[] =
+			{
+				sf::Vertex(sf::Vector2f(*(laLigne.first->getCoords()), *(laLigne.first->getCoords()))),
+				sf::Vertex(sf::Vector2f(*(laLigne.second->getCoords()+1), *(laLigne.second->getCoords()+1)))
+			};
+
+			window.draw(line, 2, sf::Lines);
+		}
 		window.display();
 	
 }

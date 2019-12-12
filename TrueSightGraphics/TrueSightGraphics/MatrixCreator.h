@@ -2,6 +2,10 @@
 #include "TMatrix.h"
 #include "Player.h"
 #include "ObjetPhysique.h"
+#include <math.h>
+
+
+#define M_PI 3.14159265
 
 
 const std::array<float, 16> identityArray{ 1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1 };

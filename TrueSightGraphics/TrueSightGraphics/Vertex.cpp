@@ -21,12 +21,19 @@ float *Vertex::getCoords()
 
 void Vertex::afficher()
 {
+	std::cout << "\n";
 	for (size_t j = 0; j < 4; j++)
 	{
+
+		
 		std::cout << mCoords[j];
 		std::cout << "\t";
 
 	}
+	std::cout << "\n";
+	std::cout << "\n";
+	std::cout << "\n";
+
 }
 
 Vertex Vertex::operator*(TMatrix &right)

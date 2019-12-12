@@ -17,15 +17,13 @@ Game::~Game()
 
 void Game::run()
 {
-	
-
 	populateSpace();
 	loop();
 }
 
 void Game::populateSpace()
 {
-	gameSpace.createObject(0, 1, 0, 0, -1, 0);
+	gameSpace.createObject(0, 1, 0, 0, -3, 0);
 }
 
 void Game::update()
@@ -56,7 +54,9 @@ void Game::loop()
 	}
 }
 
+
+
 void Game::display()
 {
-	v.display(&lines);
+	v.display(gameSpace.getLines());
 }

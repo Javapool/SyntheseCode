@@ -7,16 +7,17 @@ Shape::Shape(ShapeBlueprint BP)
 	mPVertices = BP.getVertices();
 	std::vector<std::pair<int, int>> lines = BP.getLines();
 	std::vector<std::tuple<int, int, int>> planes = BP.getPlanes();
-	mLines.resize(lines.size());
+	//mLines.resize(lines.size());
 	mPLines.resize(lines.size());
 	mPlanes.resize(planes.size());
 	for (size_t i = 0; i < lines.size(); i++)
 	{
-		mLines[i].first = &(mVertices[lines[i].first]);
-		mLines[i].second = &(mVertices[lines[i].second]);
+		//mLines[i].first = &(mVertices[lines[i].first]);
+		//mLines[i].second = &(mVertices[lines[i].second]);
 
 		std::get<0>(mPLines[i]) = &(mPVertices[(lines[i].first)]);
 		std::get<1>(mPLines[i]) = &(mPVertices[(lines[i].second)]);
+		std::get<2>(mPLines[i]) = true;
 	}
 
 	for (size_t j = 0; j < planes.size(); j++)
@@ -31,30 +32,31 @@ Shape::Shape(ShapeBlueprint BP)
 
 void Shape::transform(TMatrix matriceTrans)
 {
-	for (Vertex v : mVertices) {
-		v = v * (matriceTrans);
-		v.divideByH();
-	}
-}
-
-void Shape::
-normalize(TMatrix  matriceNorm)
-{
 	std::vector<Vertex>::iterator it1 = mVertices.begin();
 	std::vector<Vertex>::iterator it2 = mPVertices.begin();
 
 	while (it1 != mVertices.end() && it2 != mPVertices.end()) {
 
-		*it1 = *it2 * matriceNorm;
+		(*it2) = (*it1) * matriceTrans;
 		//make sure H is 1
-		it1->divideByH();
+		it2->divideByH();
 		//project onto z=-1  plane
-		it1->divideByZ();
+		it2->divideByZ();
 
 		it1++;
 		it2++;
 	}
 }
+
+std::vector<pLine> *Shape::getLines()
+{
+	return &mPLines;
+}
+
+//void Shape::normalize(TMatrix  matriceNorm)
+//{
+//
+//}
 
 Shape::~Shape()
 {

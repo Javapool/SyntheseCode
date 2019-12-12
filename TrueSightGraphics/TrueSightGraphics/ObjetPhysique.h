@@ -21,7 +21,7 @@ class ObjetPhysique
 
 
 
-	Shape *mForme;
+	Shape mForme;
 public:
 	ObjetPhysique(ShapeBlueprint bluePrint, float size, float posX, float posY, float posZ, float angle);
 	~ObjetPhysique();

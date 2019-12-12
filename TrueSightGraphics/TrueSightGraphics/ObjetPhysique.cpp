@@ -4,16 +4,15 @@
 
 
 ObjetPhysique::ObjetPhysique(ShapeBlueprint bluePrint, float size, float posX, float posY, float posZ, float angle)
-	:mX{ posX }, mY{ posY }, mZ{ posZ }, mAngle{ angle }
+	:mX{ posX }, mY{ posY }, mZ{ posZ }, mAngle{ angle },mForme(bluePrint)
 {
-	mForme = &Shape(bluePrint);
 	TMatrix scaleMatrix = MatrixCreator::scale(size);
 	TMatrix angleMatrix = MatrixCreator::rotationY(angle);
 	TMatrix positionMatrix = MatrixCreator::translation(posX, posY, posZ);
 
 	TMatrix placementMatrix = ((scaleMatrix*angleMatrix)*positionMatrix);
 
-	mForme->transform(placementMatrix);
+	mForme.transform(placementMatrix);
 
 }
 
@@ -24,12 +23,12 @@ ObjetPhysique::~ObjetPhysique()
 
 void ObjetPhysique::normalize(TMatrix tMatrix)
 {
-	mForme->normalize(tMatrix);
+	mForme.transform(tMatrix);
 
 }
 Shape* ObjetPhysique::getShape()
 {
-	return mForme;
+	return &mForme;
 }
 
 void ObjetPhysique::move()
@@ -46,7 +45,7 @@ void ObjetPhysique::move()
 		TMatrix placemetMatrix = MatrixCreator::translation(mDeltaX,mDeltaY,mDeltaZ);
 	}
 
-	mForme->transform(placementMatrix);
+	mForme.transform(placementMatrix);
 }
 
 void ObjetPhysique::clampAngle()
