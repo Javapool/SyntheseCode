@@ -25,6 +25,7 @@ public:
 	Shape(ShapeBlueprint BP);
 	void transform(TMatrix matriceTrans);
 	std::vector<pLine> *getLines();
+	void displayCheck();
 	//void normalize(TMatrix matriceNorm);
 	~Shape();
 };

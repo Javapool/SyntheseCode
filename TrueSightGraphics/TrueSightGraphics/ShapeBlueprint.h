@@ -1,6 +1,7 @@
 #pragma once
 #include "Vertex.h"
 #include <Tuple>
+#include <string>s
 
 class ShapeBlueprint
 {
@@ -10,9 +11,11 @@ class ShapeBlueprint
 	std::vector<Vertex> mVertices;
 	std::vector<lineIndex> mLines;
 	std::vector<planeIndex> mPlanes;
+	std::string mName;
 public:
 	ShapeBlueprint();
 	~ShapeBlueprint();
+	void setName(std::string nom);
 	void resizeVerticesVector(uint16_t n);
 	void resizeLinePlaneVectors(uint16_t n);
 	void addVertex(float x, float y, float z, float h);

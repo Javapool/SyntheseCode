@@ -1,5 +1,23 @@
 #include "ShapeBuilder.h"
 
+void ShapeBuilder::generateGrid(float lines)
+{
+	ShapeBlueprint bp;
+	for (float i{0}; i < lines; ++i) {
+		bp.addVertex(-1, 0, 1-((i*(1 / lines))*2), 1);
+		bp.addVertex(1, 0, 1 - ((i*(1 / lines)) * 2), 1);
+	}
+	for (float i{0}; i < lines; ++i) {
+		bp.addVertex(1 - ((i*(1 / lines)) * 2), 0, -1 , 1);
+		bp.addVertex(1 - ((i*(1 / lines)) * 2), 0, 1, 1);
+	}
+	for (float i{ 0 }; i < lines*2; ++i) {
+		bp.addLine((2*i),(2*i)+1);
+	}
+
+	mBlueprints.push_back(bp);
+}
+
 void ShapeBuilder::readFiles()
 {
 	std::string folder{ "..\\OBJFILES" };
@@ -18,6 +36,7 @@ void ShapeBuilder::readFiles()
 	}
 	
 }
+
 
 void ShapeBuilder::showFiles()
 {

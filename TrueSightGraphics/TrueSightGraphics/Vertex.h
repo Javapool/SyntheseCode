@@ -17,6 +17,7 @@ public:
 	Vertex operator*(TMatrix &right);
 	Vertex& operator+=(Vertex &right);
 	void divideByH();
-	void divideByZ();
+	//void divideByZ();
+
 };
 

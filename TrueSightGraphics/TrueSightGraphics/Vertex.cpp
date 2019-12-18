@@ -16,7 +16,7 @@ Vertex::~Vertex()
 
 float *Vertex::getCoords()
 {
-	return mCoords;
+	return &mCoords[0];
 }
 
 void Vertex::afficher()
@@ -64,15 +64,33 @@ Vertex& Vertex::operator+=(Vertex &right)
 void Vertex::divideByH()
 {
 	float *matStart = mCoords;
-	*matStart /= *(matStart + 3);
-	*(matStart + 1) /= *(matStart + 3);
-	*(matStart + 2) /= *(matStart + 3);
-	*(matStart + 3) = 1;
-}
+	float &xCoord = *matStart;
+	float &yCoord = *(matStart + 1);
+	float &hCoord = *(matStart + 3);
+	 
 
-void Vertex::divideByZ()
-{
-	float *matStart = mCoords;
-	*matStart /= *(matStart + 2);
-	*(matStart + 1) /= *(matStart + 2);
+	if (hCoord <= 0) {
+
+		if (hCoord < -1) {
+			hCoord = -1 / hCoord;
+		}
+		else {
+			hCoord = -hCoord;
+		}
+	}
+
+	*matStart /= hCoord;
+	*(matStart + 1) /= hCoord;
+	//*(matStart + 2) /= *(matStart + 3);
+	*(matStart + 3) = 1;
+
 }
+//
+//void Vertex::divideByZ()
+//{
+//	float *matStart = mCoords;
+//	*matStart /= (*(matStart + 2));
+//	*(matStart + 1) /= (*(matStart + 2));
+//}
+
+

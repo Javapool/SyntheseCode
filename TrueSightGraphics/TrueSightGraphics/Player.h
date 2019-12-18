@@ -1,7 +1,14 @@
 #pragma once
+#include <math.h>
+#include <algorithm>
+#define M_PI 3.14159265
 class Player
 {
+
 private:
+	const float ACCELERATION{ 0.0001 };
+	const float MAX_SPEED{0.1};
+	const float MIN_SPEED{-MAX_SPEED};
 
 	friend class MatrixCreator;
 
@@ -10,6 +17,7 @@ private:
 	float mY{0};
 	float mZ{0};
 
+
 	float mXSpeed{0};
 	float mYSpeed{0};
 	float mZSpeed{0};
@@ -17,6 +25,15 @@ private:
 
 public:
 
+	enum DIRECTION
+	{
+		FORWARD,
+		LEFT,
+		BACK,
+		RIGHT,
+		UP,
+		DOWN
+	};
 	Player() = default;
 	~Player() = default;
 
@@ -27,6 +44,22 @@ public:
 		}
 		return instance;
 	}
+
+	void move();
+
+	void accelerateLeft();
+	void accelerateRight();
+	void accelerateForward();
+	void accelerateBackwards();
+	void accelerateUp();
+	void accelerateDown();
+	void decelerateLeft();
+	void decelerateRight();
+	void decelerateForward();
+	void decelerateBackwards();
+	void decelerateUp();
+	void decelerateDown();
+	void turnY(float angle);
 
 
 };

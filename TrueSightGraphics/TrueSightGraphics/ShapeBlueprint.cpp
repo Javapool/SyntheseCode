@@ -11,6 +11,11 @@ ShapeBlueprint::~ShapeBlueprint()
 {
 }
 
+void ShapeBlueprint::setName(std::string nom)
+{
+	mName = nom;
+}
+
 void ShapeBlueprint::resizeVerticesVector(uint16_t n)
 {
 	mVertices.reserve(n);

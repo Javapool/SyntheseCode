@@ -17,13 +17,13 @@ class ObjetPhysique
 	float mDeltaX{0};
 	float mDeltaY{0};
 	float mDeltaZ{0};
-	float mDeltaAngle{0};
+	float mDeltaAngle;
 
 
 
 	Shape mForme;
 public:
-	ObjetPhysique(ShapeBlueprint bluePrint, float size, float posX, float posY, float posZ, float angle);
+	ObjetPhysique(ShapeBlueprint bluePrint, float size, float posX, float posY, float posZ, float angle, float spin);
 	~ObjetPhysique();
 	void normalize(TMatrix tMatrix);
 	Shape* getShape();

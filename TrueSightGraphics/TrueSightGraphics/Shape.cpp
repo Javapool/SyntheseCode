@@ -41,7 +41,7 @@ void Shape::transform(TMatrix matriceTrans)
 		//make sure H is 1
 		it2->divideByH();
 		//project onto z=-1  plane
-		it2->divideByZ();
+		//it2->divideByZ();
 
 		it1++;
 		it2++;
@@ -51,6 +51,20 @@ void Shape::transform(TMatrix matriceTrans)
 std::vector<pLine> *Shape::getLines()
 {
 	return &mPLines;
+}
+
+void Shape::displayCheck()
+{
+	for (pLine &line : mPLines) {
+
+		if (std::get<0>(line)->getCoords()[2] >-1 && std::get<1>(line)->getCoords()[2] > -1)
+		{
+			std::get<2>(line) = false;
+		}
+		else {
+			std::get<2>(line) = true;
+		}
+	}
 }
 
 //void Shape::normalize(TMatrix  matriceNorm)

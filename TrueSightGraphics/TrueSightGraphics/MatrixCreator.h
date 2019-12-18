@@ -19,6 +19,7 @@ public:
 	static TMatrix identity();
 	static TMatrix composite(float x, float y, float z, float degY);
 	static TMatrix scale(float size);
+	static void projection(float fov, float nearPlane, float farPlane, TMatrix &source);
 	static void normalization(Player *player, TMatrix & source);
 	static void movement(ObjetPhysique *, TMatrix & );
 };

@@ -6,6 +6,12 @@
 class Game
 {
 private :
+	int MOUSE_POSX = 1000;
+	int MOUSE_POSY = 600;
+	float ANGLE_MULTIPLIER = 0.01;
+
+	sf::Vector2i mousePos;
+
 	CONST double MS_PER_UPDATE = 20;
 	Space gameSpace;
 	View v;
@@ -19,5 +25,7 @@ public:
 	void update();
 	void loop();
 	void display();
+	void setup();
+	void getInput();
 };
 

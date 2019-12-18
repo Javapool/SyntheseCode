@@ -202,6 +202,10 @@ void FileReader::fillVectors(const std::string path, ShapeBlueprint & BP)
 {
 	std::ifstream file(path);
 	std::string currLine;
+	auto withExtension = path.find_last_of("\\");
+	auto withoutExtension = path.find_last_of(".");
+	std::string name = path.substr(withExtension, withoutExtension);
+	BP.setName(name);
 
 	while (std::getline(file, currLine)) {
 		// using printf() in all tests for consistency

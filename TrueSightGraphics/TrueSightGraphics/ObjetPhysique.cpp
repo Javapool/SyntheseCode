@@ -3,14 +3,14 @@
 
 
 
-ObjetPhysique::ObjetPhysique(ShapeBlueprint bluePrint, float size, float posX, float posY, float posZ, float angle)
-	:mX{ posX }, mY{ posY }, mZ{ posZ }, mAngle{ angle },mForme(bluePrint)
+ObjetPhysique::ObjetPhysique(ShapeBlueprint bluePrint, float size, float posX, float posY, float posZ, float angle, float spin)
+	:mX{ posX }, mY{ posY }, mZ{ posZ }, mAngle{ angle }, mForme(bluePrint), mDeltaAngle{spin}
 {
 	TMatrix scaleMatrix = MatrixCreator::scale(size);
 	TMatrix angleMatrix = MatrixCreator::rotationY(angle);
 	TMatrix positionMatrix = MatrixCreator::translation(posX, posY, posZ);
 
-	TMatrix placementMatrix = ((scaleMatrix*angleMatrix)*positionMatrix);
+	TMatrix placementMatrix = scaleMatrix*angleMatrix*positionMatrix;
 
 	mForme.transform(placementMatrix);
 
@@ -24,6 +24,7 @@ ObjetPhysique::~ObjetPhysique()
 void ObjetPhysique::normalize(TMatrix tMatrix)
 {
 	mForme.transform(tMatrix);
+	mForme.displayCheck();
 
 }
 Shape* ObjetPhysique::getShape()
@@ -33,19 +34,11 @@ Shape* ObjetPhysique::getShape()
 
 void ObjetPhysique::move()
 {
-	TMatrix placementMatrix;
-	if (mDeltaAngle != 1) {
-		TMatrix centerMatrix = MatrixCreator::translation(-mX,-mY,-mZ);
-		TMatrix angleMatrix = MatrixCreator::rotationY(mDeltaAngle);
-		TMatrix positionMatrix = MatrixCreator::translation(mDeltaX+mX, mDeltaY+mY, mDeltaZ+mZ);
-		TMatrix placementMatrix = ((centerMatrix*angleMatrix)*positionMatrix);
-
-	}
-	else {
-		TMatrix placemetMatrix = MatrixCreator::translation(mDeltaX,mDeltaY,mDeltaZ);
-	}
-
-	mForme.transform(placementMatrix);
+	mX += mDeltaX;
+	mY += mDeltaY;
+	mZ += mDeltaZ;
+	mAngle += mDeltaAngle;
+	clampAngle();
 }
 
 void ObjetPhysique::clampAngle()

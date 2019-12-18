@@ -14,6 +14,7 @@ class ShapeBuilder
 public:
 	ShapeBuilder()=default;
 	~ShapeBuilder()=default;
+	void generateGrid(float);
 	void readFiles();
 	void showFiles();
 	ShapeBlueprint getShape(int index);

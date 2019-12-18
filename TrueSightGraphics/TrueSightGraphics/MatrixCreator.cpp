@@ -54,6 +54,19 @@ TMatrix MatrixCreator::scale(float size)
 	return temp;
 }
 
+void MatrixCreator::projection(float fov , float near, float far, TMatrix & source)
+{
+	float scale = 1 / (tan((fov / 2)*(M_PI / 180)));
+	//source = identityArray;
+	//source.mValues[0] = scale;
+	//source.mValues[5] = scale;
+	//source.mValues[10] = -(far / (far - near));
+	source.mValues[11] = -1;
+	source.mValues[15] = 0;
+
+}
+
+
 void MatrixCreator::normalization(Player * player, TMatrix & source)
 {
 
@@ -71,6 +84,7 @@ void MatrixCreator::movement(ObjetPhysique *objet, TMatrix & source)
 	const float posX{ objet->mX };
 	const float posY{ objet->mY };
 	const float posZ{ objet->mZ };
+	const float angle{ objet->mAngle };
 
 	const float deltaX{ objet->mDeltaX };
 	const float deltaY{ objet->mDeltaY };
@@ -78,6 +92,6 @@ void MatrixCreator::movement(ObjetPhysique *objet, TMatrix & source)
 
 	const float deltaAngle{ objet->mDeltaAngle };
 
-	source = translation(-(posX), -(posY), -(posZ))*rotationY(deltaAngle)* translation(posX+deltaX, posY+deltaY, posZ+deltaZ);
+	source = rotationY(angle)* translation(posX, posY, posZ);
 }
 
