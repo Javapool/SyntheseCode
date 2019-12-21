@@ -53,7 +53,6 @@ void Player::decelerateLeft()
 	if (mXSpeed < 0)
 	{
 		mXSpeed += ACCELERATION;
-
 	}
 }
 

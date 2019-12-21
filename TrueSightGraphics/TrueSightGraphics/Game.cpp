@@ -28,21 +28,11 @@ void Game::run()
 
 void Game::populateSpace()
 {
-	gameSpace.createObject(0, 1 ,0, -1,-20, 0,0);
-	gameSpace.createObject(1, 100, 0, 0,-20, 0,0.5);
-	gameSpace.createObject(2, 5, 5, 5,-5, 0,-0.5);
-	gameSpace.createObject(2, 10, 5, 20,-5, 0,0);
-	gameSpace.createObject(2, 5, 10, 5,-5, 0,0);
-	gameSpace.createObject(2, 5, 5, 10,-5, 0,0);
-	gameSpace.createObject(2, 5, 5, 0,-5, 0,0);
-	gameSpace.createObject(2, 5, -5, 0,-5, 0,0);
-	gameSpace.createObject(2, 5, 5, 0,-5, 0,0);
-	gameSpace.createObject(2, 5, 5, 0,-10, 0,0);
-	gameSpace.createObject(2, 5, -5, 0,-10, 0,0);
-	gameSpace.createObject(2, 5, 5, 0,-15, 0,0);
-	gameSpace.createObject(2, 10, -5, 0,-15, 0,0);
-	gameSpace.createObject(4, 10, -10, 0,-15, 0,0);
+
+	gameSpace.createObject(7, 8, -10, 0, -5, 0, 0.5);
+
 }
+
 
 void Game::update()
 {

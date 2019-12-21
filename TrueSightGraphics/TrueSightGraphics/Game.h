@@ -8,7 +8,7 @@ class Game
 private :
 	int MOUSE_POSX = 1000;
 	int MOUSE_POSY = 600;
-	float ANGLE_MULTIPLIER = 0.01;
+	float ANGLE_MULTIPLIER = 0.02;
 
 	sf::Vector2i mousePos;
 

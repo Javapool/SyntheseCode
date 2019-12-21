@@ -4,7 +4,6 @@
 View::View(uint16_t screenWidth, uint16_t screenHeight, uint8_t ratioToZ)
 	:mScreenWidth{ screenWidth }, mScreenHeight{ screenHeight }, window(sf::VideoMode(screenWidth, screenHeight), "TrueSight GFX")
 {
-
 	//HWND hWnd = GetConsoleWindow();
 	//ShowWindow(hWnd, SW_HIDE);
 	window.setMouseCursorVisible(false);
@@ -33,7 +32,7 @@ void View::display(std::list<std::pair<Vertex*, Vertex*>> lines)
 
 
 
-		window.clear();
+	//	window.clear();
 		std::vector<sf::Vertex> vertices;
 
 		for(std::pair<Vertex*, Vertex*> laLigne : lines)
