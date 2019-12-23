@@ -15,8 +15,8 @@ class FileReader
 	std::string currentFile;
 
 public:
-	FileReader();
-	~FileReader();
+	FileReader()=default;
+	~FileReader()=default;
 	ShapeBlueprint readFile(const std::string path);
 
 private:

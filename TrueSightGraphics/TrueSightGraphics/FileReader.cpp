@@ -2,14 +2,6 @@
 
 
 
-FileReader::FileReader()
-{
-}
-
-
-FileReader::~FileReader()
-{
-}
 
 ShapeBlueprint FileReader::readFile(const std::string path)
 {
@@ -22,14 +14,12 @@ ShapeBlueprint FileReader::readFile(const std::string path)
 	if (!file.is_open())
 	{
 		std::cout << errorBadFile;
-		_getch();
 		exit(1);
 	}
 
 	if (path.substr(path.size() - 4, 4) != ".obj")
 	{
 		std::cout << errorBadFileType;
-		_getch();
 		exit(2);
 	}
 

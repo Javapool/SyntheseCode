@@ -15,10 +15,10 @@ TMatrix MatrixCreator::rotationY(float deg)
 {
 	//deg est en radians
 	TMatrix temp = TMatrix(identityArray);
-	temp.mValues[0] = cos(deg*M_PI/180);
-	temp.mValues[2] = -sin(deg*M_PI / 180);
-	temp.mValues[8] = sin(deg*M_PI / 180);
-	temp.mValues[10] = cos(deg*M_PI / 180);
+	temp.mValues[0] = static_cast<float>(cos(deg*M_PI/180));
+	temp.mValues[2] = static_cast<float>(-sin(deg*M_PI / 180));
+	temp.mValues[8] = static_cast<float>(sin(deg*M_PI / 180));
+	temp.mValues[10] = static_cast<float>(cos(deg*M_PI / 180));
 
 	return temp;
 }

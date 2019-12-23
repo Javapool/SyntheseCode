@@ -6,8 +6,8 @@ class Player
 {
 
 private:
-	const float ACCELERATION{ 0.0001 };
-	const float MAX_SPEED{0.1};
+	const float ACCELERATION{ 0.0001f };
+	const float MAX_SPEED{0.1f};
 	const float MIN_SPEED{-MAX_SPEED};
 
 	friend class MatrixCreator;
