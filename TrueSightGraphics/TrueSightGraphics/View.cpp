@@ -32,7 +32,7 @@ void View::display(std::list<std::pair<Vertex*, Vertex*>> lines)
 
 
 
-	//	window.clear();
+		window.clear();
 		std::vector<sf::Vertex> vertices;
 
 		for(std::pair<Vertex*, Vertex*> laLigne : lines)

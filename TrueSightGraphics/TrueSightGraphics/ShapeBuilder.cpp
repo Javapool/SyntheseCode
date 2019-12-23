@@ -20,8 +20,8 @@ void ShapeBuilder::generateGrid(float lines)
 
 void ShapeBuilder::readFiles()
 {
-	std::string folder{ "..\\OBJFILES" };
-	std::string search_path{"..\\OBJFILES\\*.obj" };
+	std::string folder{ ".\\OBJFILES" };
+	std::string search_path{".\\OBJFILES\\*.obj" };
 	WIN32_FIND_DATA fd;
 	HANDLE hFind = FindFirstFile(search_path.c_str(), &fd);
 	if (hFind != INVALID_HANDLE_VALUE) {

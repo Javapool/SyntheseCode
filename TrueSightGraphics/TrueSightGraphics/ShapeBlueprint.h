@@ -1,7 +1,7 @@
 #pragma once
 #include "Vertex.h"
 #include <Tuple>
-#include <string>s
+#include <string>
 
 class ShapeBlueprint
 {

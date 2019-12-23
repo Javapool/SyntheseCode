@@ -29,7 +29,11 @@ void Game::run()
 void Game::populateSpace()
 {
 
-	gameSpace.createObject(7, 8, -10, 0, -5, 0, 0.5);
+	gameSpace.createObject(0, 8, 0, -1,  -5, 0, 0);
+	gameSpace.createObject(1, 8, 0, 0, -5, 0, 0.4);
+	gameSpace.createObject(2, 8, 0, 0, -5, 0, 0);
+	gameSpace.createObject(3, 8, -10, 0, -5, 0, 0);
+
 
 }
 
