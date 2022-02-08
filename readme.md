@@ -1,6 +1,6 @@
-README
+# README
 
-Pour le fichier .exe:
+### Pour le fichier .exe:
 
 Pour se déplacer:
 W pour avancer
@@ -13,7 +13,7 @@ CTRL pour descendre
 
 SOURIS pour tourner
 
-Pour le code VisualStudio:
+### Pour le code VisualStudio:
 
 Des librairies ont été ajoutées pour utiliser certaines fonctions de sfml (window, keyboard, mouse et draw)
 Pour faire fonctionner ces librairies, il sera nécéssaire de corriger le chemin d'accès des dépendances.
